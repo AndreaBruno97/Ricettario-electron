@@ -1,4 +1,3 @@
-
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -6,6 +5,18 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 const isDev = require('electron-is-dev');
+
+/*TODO move this section in a separate file*/
+var Datastore = require('nedb-promises');
+var recipes = Datastore.create({ filename: `${path.join(__dirname, '../storage/db/recipes.db')}`, autoload: true });
+
+console.log("wwwwwwwwwwwwwwwwwwww")
+recipes.find({})
+    .then(
+    (doc)=>{
+    console.log(doc)}
+)
+/**/
 
 let mainWindow;
 
